@@ -18,7 +18,7 @@ launch:
       args: $(var vocab) $(var config) $(var rectify)
       param:
         - 
-          from: "$(find-pkg-share orbslam3)/config/stereo-slam.yaml"
+          from: "$(find-pkg-share orbslam3)/config/stereo-slam_435i.yaml"
       remap:
       -
           from: "/camera/left"

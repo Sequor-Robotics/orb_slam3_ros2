@@ -1,0 +1,8 @@
+orbslam3:
+  ros__parameters:
+    world_frame: "map"
+    odom_frame: "odom"
+    camera_frame: 'd455_link'
+    camera_optical_frame: "d455_infra1_optical_frame"
+    body_frame: "d455_link" # This is the same as camera_frame (no body frame in stereo)
+    body_optical_frame: "d455_imu_optical_frame"

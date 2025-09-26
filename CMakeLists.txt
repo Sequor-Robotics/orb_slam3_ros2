@@ -2,13 +2,12 @@ cmake_minimum_required(VERSION 3.5)
 project(orbslam3)
 
 # You should set the PYTHONPATH to your own python site-packages path
-set(ENV{PYTHONPATH} "/opt/ros/foxy/lib/python3.8/site-packages/")
+set(ENV{PYTHONPATH} "/opt/ros/humble/lib/python3.10/site-packages")
 
 # set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
 set(CMAKE_MODULE_PATH 
 ${CMAKE_MODULE_PATH} 
-${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules 
-"/home/thirdparty/ORB_SLAM3/CMakeModules")
+${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules) 
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -33,12 +32,26 @@ find_package(Pangolin REQUIRED)
 find_package(epoxy REQUIRED)
 find_package(OpenGL REQUIRED COMPONENTS OpenGL EGL)
 find_package(ORB_SLAM3 REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(OpenCV 4.0 QUIET)
+   if(NOT OpenCV_FOUND)
+      message(FATAL_ERROR "OpenCV > 4.2 not found.")
+   endif()
+
+MESSAGE("OPENCV VERSION:")
+MESSAGE(${OpenCV_VERSION})
+
+# Add the directory containing libORB_SLAM3.so to the linker search path
+link_directories(~/thirdparty/ORB-SLAM3-STEREO-FIXED/Thirdparty/DBoW2/lib)
+link_directories(~/thirdparty/ORB-SLAM3-STEREO-FIXED/Thirdparty/g2o/lib)
+link_directories(~/thirdparty/ORB-SLAM3-STEREO-FIXED/lib)
 
 add_executable(mono
   src/monocular/mono.cpp
   src/monocular/monocular-slam-node.cpp
 )
-ament_target_dependencies(mono rclcpp sensor_msgs cv_bridge ORB_SLAM3 Pangolin)
+
+ament_target_dependencies(mono rclcpp sensor_msgs cv_bridge ORB_SLAM3 Pangolin visualization_msgs)
 target_include_directories(
   mono 
   PUBLIC 
@@ -49,7 +62,7 @@ add_executable(rgbd
   src/rgbd/rgbd.cpp
   src/rgbd/rgbd-slam-node.cpp
 )
-ament_target_dependencies(rgbd rclcpp sensor_msgs cv_bridge message_filters ORB_SLAM3 Pangolin)
+ament_target_dependencies(rgbd rclcpp sensor_msgs cv_bridge message_filters ORB_SLAM3 Pangolin visualization_msgs)
 target_include_directories(
   rgbd
   PUBLIC 
@@ -61,24 +74,30 @@ add_executable(stereo
   src/stereo/stereo-slam-node.cpp
   src/ros_utils.cpp
 )
-ament_target_dependencies(stereo rclcpp sensor_msgs geometry_msgs nav_msgs tf2 tf2_ros cv_bridge message_filters ORB_SLAM3 Pangolin)
+ament_target_dependencies(stereo rclcpp sensor_msgs geometry_msgs nav_msgs tf2 tf2_ros cv_bridge message_filters ORB_SLAM3 Pangolin visualization_msgs)
 target_include_directories(
   stereo
   PUBLIC 
   ${PROJECT_SOURCE_DIR}/include ${ORB_SLAM3_INCLUDE_DIRS}/include ${ORB_SLAM3_INCLUDE_DIRS}/include/CameraModels
 )
 
+target_link_libraries(mono ${OpenCV_LIBS} ${ORB_SLAM3_LIBRARIES})
+target_link_libraries(rgbd ${OpenCV_LIBS} ${ORB_SLAM3_LIBRARIES})
+target_link_libraries(stereo ${OpenCV_LIBS} ${ORB_SLAM3_LIBRARIES})
+
+# Streo-Inertial SLAM
 add_executable(stereo-inertial
   src/stereo-inertial/stereo-inertial.cpp
   src/stereo-inertial/stereo-inertial-node.cpp
   src/ros_utils.cpp
 )
-ament_target_dependencies(stereo-inertial rclcpp sensor_msgs geometry_msgs nav_msgs tf2 tf2_ros cv_bridge ORB_SLAM3 Pangolin)
+ament_target_dependencies(stereo-inertial rclcpp sensor_msgs geometry_msgs nav_msgs tf2 tf2_ros cv_bridge ORB_SLAM3 Pangolin visualization_msgs)
 target_include_directories(
   stereo-inertial
   PUBLIC 
   ${PROJECT_SOURCE_DIR}/include ${ORB_SLAM3_INCLUDE_DIRS}/include ${ORB_SLAM3_INCLUDE_DIRS}/include/CameraModels
 )
+target_link_libraries(stereo-inertial ${OpenCV_LIBS} ${ORB_SLAM3_LIBRARIES})
 
 install(TARGETS mono rgbd stereo stereo-inertial
   DESTINATION lib/${PROJECT_NAME})

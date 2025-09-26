@@ -4,7 +4,7 @@ launch:
       default: $(find-pkg-share orbslam3)/vocabulary/ORBvoc.txt
   - arg:
       name: "config"
-      default: $(find-pkg-share orbslam3)/config/stereo-inertial/RealSense_D435i.yaml
+      default: $(find-pkg-share orbslam3)/config/stereo-inertial/zed.yaml
   - arg:
       name: "rectify"
       default: "false"
@@ -13,7 +13,7 @@ launch:
       default: "false"
   - arg:
       name: "camera_name"
-      default: "d435i"
+      default: "zedx"
   - node:
       pkg: "orbslam3"
       exec: "stereo-inertial"
@@ -21,14 +21,14 @@ launch:
       args: $(var vocab) $(var config) $(var rectify) $(var equalize)
       param:
         - 
-          from: "$(find-pkg-share orbslam3)/config/stereo-inertial-slam_d435i.yaml"
+          from: "$(find-pkg-share orbslam3)/config/zed-stereo-inertial-slam.yaml"
       remap:
         -
           from: "/camera/left"
-          to: "/$(var camera_name)/$(var camera_name)/infra1/image_rect_raw"
+          to: "/$(var camera_name)/zed_node/left/image_rect_color"
         -
           from: "/camera/right"
-          to: "/$(var camera_name)/$(var camera_name)/infra2/image_rect_raw"
+          to: "/$(var camera_name)/zed_node/right/image_rect_color"
         -
           from: "/imu"
-          to: "/$(var camera_name)/$(var camera_name)/imu"
+          to: "/$(var camera_name)/zed_node/imu/data"

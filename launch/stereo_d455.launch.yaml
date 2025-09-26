@@ -9,20 +9,26 @@ launch:
       name: "rectify"
       default: "false"
   - arg:
+      name: "equalize"
+      default: "false"
+  - arg:
       name: "camera_name"
       default: "d455"
   - node:
       pkg: "orbslam3"
       exec: "stereo"
       name: "orbslam3"
-      args: $(var vocab) $(var config) $(var rectify)
+      args: $(var vocab) $(var config) $(var rectify) $(var equalize)
       param:
         - 
-          from: "$(find-pkg-share orbslam3)/config/stereo-slam.yaml"
+          from: "$(find-pkg-share orbslam3)/config/stereo-slam_d455.yaml"
       remap:
-      -
+        -
           from: "/camera/left"
           to: "/$(var camera_name)/$(var camera_name)/infra1/image_rect_raw"
-      -
+        -
           from: "/camera/right"
           to: "/$(var camera_name)/$(var camera_name)/infra2/image_rect_raw"
+        -
+          from: "/imu"
+          to: "/$(var camera_name)/$(var camera_name)/imu"

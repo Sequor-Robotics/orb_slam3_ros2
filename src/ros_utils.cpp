@@ -9,7 +9,7 @@ void publish_camera_pose(
   const rclcpp::Publisher<PoseMsg>::SharedPtr& publisher, 
   const rclcpp::Time& stamp,
   Sophus::SE3f& Twc,  
-  std::string world_frame_id)
+  const std::string& world_frame_id)
 {
   // Twc: pose matrix from world coordinate to camera coordinate
   geometry_msgs::msg::PoseStamped pose_msg;
@@ -34,7 +34,7 @@ void publish_body_odometry(
   Sophus::SE3f Twb, 
   Eigen::Vector3f Vwb, 
   Eigen::Vector3f Wwb,
-  std::string world_frame_id,
+  const std::string& world_frame_id,
   std::string odom_frame_id)
 {
   // Twb: pose matrix from world coordinate to body coordinate
@@ -147,6 +147,174 @@ void publish_world_to_odom_tf(
   tf_broadcaster->sendTransform(t);
 }
 
+void publish_keypoints(
+  const rclcpp::Publisher<PcdMsg>::SharedPtr& publisher,
+  const std::vector<ORB_SLAM3::MapPoint*>& tracked_map_points,
+  const std::vector<cv::KeyPoint>& tracked_keypoints,
+  const rclcpp::Time& msg_time,
+  const std::string& world_frame_id
+)
+{
+  if (tracked_keypoints.empty()) return;
+
+  std::vector<cv::KeyPoint> finalKeypoints;
+  finalKeypoints.reserve(tracked_keypoints.size());
+
+  for (size_t i = 0; i < tracked_map_points.size() && i < tracked_keypoints.size(); ++i) {
+    if (tracked_map_points[i]) finalKeypoints.push_back(tracked_keypoints[i]);
+  }
+
+  sensor_msgs::msg::PointCloud2 cloud = keypoints_to_pointcloud(finalKeypoints, msg_time, world_frame_id);
+  publisher->publish(cloud);
+}
+
+//////////////////// Conversions & helpers ////////////////////
+
+sensor_msgs::msg::PointCloud2 keypoints_to_pointcloud(
+  std::vector<cv::KeyPoint>& keypoints,
+  const rclcpp::Time& msg_time, 
+  const std::string& world_frame_id)
+{
+  const int num_channels = 3; // x y z
+
+  sensor_msgs::msg::PointCloud2 cloud;
+  cloud.header.stamp = msg_time;
+  cloud.header.frame_id = world_frame_id;
+  cloud.height = 1;
+  cloud.width  = static_cast<uint32_t>(keypoints.size());
+  cloud.is_bigendian = false;
+  cloud.is_dense = true;
+  cloud.point_step = num_channels * sizeof(float);
+  cloud.row_step   = cloud.point_step * cloud.width;
+  cloud.fields.resize(num_channels);
+
+  const char* channel_id[] = {"x","y","z"};
+  for (int i=0;i<num_channels;++i) {
+    cloud.fields[i].name   = channel_id[i];
+    cloud.fields[i].offset = i * sizeof(float);
+    cloud.fields[i].count  = 1;
+    cloud.fields[i].datatype = sensor_msgs::msg::PointField::FLOAT32;
+  }
+
+  cloud.data.resize(cloud.row_step * cloud.height);
+  unsigned char* ptr = cloud.data.data();
+
+  for (uint32_t i=0;i<cloud.width;++i) {
+    float data_array[num_channels] = {
+      keypoints[i].pt.x,
+      keypoints[i].pt.y,
+      0.0f
+    };
+    std::memcpy(ptr + (i * cloud.point_step), data_array, sizeof(data_array));
+  }
+  return cloud;
+}
+
+sensor_msgs::msg::PointCloud2 mappoint_to_pointcloud(
+  const std::vector<ORB_SLAM3::MapPoint*>& map_points,
+   const rclcpp::Time& msg_time,
+    const std::string& world_frame_id)
+{
+  const int num_channels = 3;
+
+  sensor_msgs::msg::PointCloud2 cloud;
+  cloud.header.stamp = msg_time;
+  cloud.header.frame_id = world_frame_id;
+  cloud.height = 1;
+  cloud.width  = static_cast<uint32_t>(map_points.size());
+  cloud.is_bigendian = false;
+  cloud.is_dense = true;
+  cloud.point_step = num_channels * sizeof(float);
+  cloud.row_step   = cloud.point_step * cloud.width;
+  cloud.fields.resize(num_channels);
+
+  const char* channel_id[] = {"x","y","z"};
+  for (int i=0;i<num_channels;++i) {
+    cloud.fields[i].name   = channel_id[i];
+    cloud.fields[i].offset = i * sizeof(float);
+    cloud.fields[i].count  = 1;
+    cloud.fields[i].datatype = sensor_msgs::msg::PointField::FLOAT32;
+  }
+
+  cloud.data.resize(cloud.row_step * cloud.height);
+  unsigned char* ptr = cloud.data.data();
+
+  for (uint32_t i=0;i<cloud.width;++i) {
+    if (map_points[i]) {
+      Eigen::Vector3d P3Dw = map_points[i]->GetWorldPos().cast<double>();
+      float data_array[num_channels] = {
+        static_cast<float>(P3Dw.x()),
+        static_cast<float>(P3Dw.y()),
+        static_cast<float>(P3Dw.z())
+      };
+      std::memcpy(ptr + (i * cloud.point_step), data_array, sizeof(data_array));
+    } else {
+      const float nanv = std::numeric_limits<float>::quiet_NaN();
+      float data_array[num_channels] = {nanv, nanv, nanv};
+      std::memcpy(ptr + (i * cloud.point_step), data_array, sizeof(data_array));
+      cloud.is_dense = false;
+    }
+  }
+  return cloud;
+}
+
+void publish_tracked_points(
+  const rclcpp::Publisher<PcdMsg>::SharedPtr& publisher,
+  const std::vector<ORB_SLAM3::MapPoint*>& tracked_points,
+  const rclcpp::Time& msg_time,
+  const std::string& world_frame_id
+)
+{
+  auto cloud = mappoint_to_pointcloud(tracked_points, msg_time, world_frame_id);
+  publisher->publish(cloud);
+}
+
+void publish_all_points(
+  const rclcpp::Publisher<PcdMsg>::SharedPtr& publisher,
+  const std::vector<ORB_SLAM3::MapPoint*>& map_points,
+  const rclcpp::Time& msg_time,
+  const std::string& world_frame_id)
+{
+  auto cloud = mappoint_to_pointcloud(map_points, msg_time, world_frame_id);
+  publisher->publish(cloud);
+}
+
+void publish_kf_markers(
+  const rclcpp::Publisher<MarkerMsg>::SharedPtr& publisher,
+  const std::vector<Sophus::SE3f>& vKFposes,
+  const rclcpp::Time& msg_time,
+  const std::string& world_frame_id)
+{
+  const int numKFs = static_cast<int>(vKFposes.size());
+  if (numKFs == 0) return;
+
+  visualization_msgs::msg::Marker kf_markers;
+  kf_markers.header.frame_id = world_frame_id;
+  kf_markers.header.stamp    = msg_time;
+  kf_markers.ns   = "kf_markers";
+  kf_markers.type = visualization_msgs::msg::Marker::SPHERE_LIST;
+  kf_markers.action = visualization_msgs::msg::Marker::ADD;
+  kf_markers.pose.orientation.w = 1.0;
+  kf_markers.lifetime = rclcpp::Duration(0,0);
+
+  kf_markers.id = 0;
+  kf_markers.scale.x = 0.1;
+  kf_markers.scale.y = 0.1;
+  kf_markers.scale.z = 0.1;
+  kf_markers.color.g = 1.0;
+  kf_markers.color.a = 1.0;
+
+  kf_markers.points.reserve(numKFs);
+  for (int i = 0; i < numKFs; ++i) {
+    geometry_msgs::msg::Point p;
+    p.x = vKFposes[i].translation().x();
+    p.y = vKFposes[i].translation().y();
+    p.z = vKFposes[i].translation().z();
+    kf_markers.points.push_back(p);
+  }
+  
+  publisher->publish(kf_markers);
+}
 
 Eigen::Affine3f transform_to_eigen(
   const geometry_msgs::msg::TransformStamped& transform_stamped){

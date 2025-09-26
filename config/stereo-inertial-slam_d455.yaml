@@ -1,7 +1,7 @@
 orbslam3:
   ros__parameters:
-    world_frame: "map_vslam"
-    odom_frame: "odom_frame"
+    world_frame: "map"
+    odom_frame: "odom"
     # camera_optical_frame: "d435i_infra1_optical_frame"
     # body_frame: "d435i_link"
     # body_optical_frame: "d435i_imu_optical_frame"

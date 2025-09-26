@@ -14,6 +14,7 @@
 #include "tf2_ros/transform_listener.h"
 
 #include <cv_bridge/cv_bridge.h>
+#include <visualization_msgs/msg/marker.hpp>
 
 #include "System.h"
 #include "Frame.h"
@@ -27,6 +28,7 @@ using ImageMsg = sensor_msgs::msg::Image;
 using PcdMsg = sensor_msgs::msg::PointCloud2;
 using PoseMsg = geometry_msgs::msg::PoseStamped;
 using OdomMsg = nav_msgs::msg::Odometry;
+using MarkerMsg = visualization_msgs::msg::Marker;
 
 class StereoInertialNode : public rclcpp::Node
 {
@@ -47,7 +49,10 @@ private:
 
     rclcpp::Publisher<PoseMsg>::SharedPtr pubPose_;
     rclcpp::Publisher<OdomMsg>::SharedPtr pubOdom_;
-    rclcpp::Publisher<PcdMsg>::SharedPtr pubPcd_;
+    rclcpp::Publisher<PcdMsg>::SharedPtr pubTrackedKeypoints_;
+    rclcpp::Publisher<PcdMsg>::SharedPtr pubTrackedPoints_;
+    rclcpp::Publisher<PcdMsg>::SharedPtr pubAllPoints_;
+    rclcpp::Publisher<MarkerMsg>::SharedPtr pubKFMarkers_;
     rclcpp::Publisher<ImageMsg>::SharedPtr pubTrackImage_;
     std::shared_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
     std::shared_ptr<tf2_ros::StaticTransformBroadcaster> tf_static_broadcaster_;
