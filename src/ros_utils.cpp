@@ -276,11 +276,6 @@ void publish_all_points(
   const std::string& world_frame_id)
 {
   auto cloud = mappoint_to_pointcloud(map_points, msg_time, world_frame_id);
-  cloud.scale.x = 0.07;
-  cloud.scale.y = 0.07;
-  cloud.scale.z = 0.07;
-  cloud.color.g = 1.0;
-  cloud.color.a = 1.0;
   publisher->publish(cloud);
 }
 
