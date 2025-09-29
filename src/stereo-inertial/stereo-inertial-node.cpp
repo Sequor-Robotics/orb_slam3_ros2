@@ -171,15 +171,44 @@ void StereoInertialNode::SyncWithImu()
         RCLCPP_INFO_ONCE(this->get_logger(), "SLAM running...");
         cv::Mat imLeft, imRight;
         double tImLeft = 0, tImRight = 0;
-        if (!imgLeftBuf_.empty() && !imgRightBuf_.empty() && !imuBuf_.empty())
+        // --- 안전한 버퍼 상태 점검 (뮤텍스 보호) ---
+        bool hasLeft = false, hasRight = false, hasImu = false;
+        {
+            std::lock_guard<std::mutex> lkL(bufMutexLeft_);
+            hasLeft = !imgLeftBuf_.empty();
+        }
+        {
+            std::lock_guard<std::mutex> lkR(bufMutexRight_);
+            hasRight = !imgRightBuf_.empty();
+        }
+        {
+            std::lock_guard<std::mutex> lkI(bufMutex_);
+            hasImu = !imuBuf_.empty();
+        }
+
+        if (!(hasLeft && hasRight && hasImu))
+        {
+            // 바쁜 대기 방지
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            continue;
+        }
+
+        if (hasLeft && hasRight && hasImu)
         {
             RCLCPP_INFO_ONCE(this->get_logger(), "Grab Image");
-            //tImLeft = Utility::StampToSec(imgLeftBuf_.front()->header.stamp);
-            //tImRight = Utility::StampToSec(imgRightBuf_.front()->header.stamp);
-
-            // Peek messages so we can reuse the exact stamp later
-            ImageMsg::SharedPtr left_msg  = imgLeftBuf_.front();
-            ImageMsg::SharedPtr right_msg = imgRightBuf_.front();
+            // Peek messages so we can reuse the exact stamp later (뮤텍스 보호)
+            ImageMsg::SharedPtr left_msg;
+            ImageMsg::SharedPtr right_msg;
+            {
+                std::lock_guard<std::mutex> lkL(bufMutexLeft_);
+                if (imgLeftBuf_.empty()) { continue; }
+                left_msg  = imgLeftBuf_.front();
+            }
+            {
+                std::lock_guard<std::mutex> lkR(bufMutexRight_);
+                if (imgRightBuf_.empty()) { continue; }
+                right_msg = imgRightBuf_.front();
+            }
             tImLeft  = Utility::StampToSec(left_msg->header.stamp);
             tImRight = Utility::StampToSec(right_msg->header.stamp);
 
@@ -210,19 +239,16 @@ void StereoInertialNode::SyncWithImu()
             }
 
 
-            if (tImLeft > Utility::StampToSec(imuBuf_.back()->header.stamp))
-            //     continue;
             // 최신 IMU 타임스탬프를 잠금 상태에서 읽어 경합/UB 방지
+            double latest_imu_ts = 0.0;
             {
-                double latest_imu_ts = 0.0;
-                {
-                    std::lock_guard<std::mutex> lk(bufMutex_);
-                    if (!imuBuf_.empty())
-                        latest_imu_ts = Utility::StampToSec(imuBuf_.back()->header.stamp);
-                }
-                if (tImLeft > latest_imu_ts)
-                    continue;
+                std::lock_guard<std::mutex> lk(bufMutex_);
+                if (!imuBuf_.empty())
+                    latest_imu_ts = Utility::StampToSec(imuBuf_.back()->header.stamp);
             }
+            if (tImLeft > latest_imu_ts)
+                continue;
+ 
 
 
             // Use the exact subscribed timestamp from the (synced) left image
@@ -277,8 +303,14 @@ void StereoInertialNode::SyncWithImu()
             bufMutex_.unlock();
 
             
+            // CLAHE가 켜졌다면, 포인터가 비어있을 수 있으므로 안전하게 초기화
             if (bClahe_)
-            {
+             {
+                if (!clahe_)
+                {
+                    // 기본 파라미터로 생성 (필요시 파라미터화)
+                    clahe_ = cv::createCLAHE(3.0, cv::Size(8, 8));
+                }
                 clahe_->apply(imLeft, imLeft);
                 clahe_->apply(imRight, imRight);
             }
@@ -347,6 +379,11 @@ void StereoInertialNode::SyncWithImu()
 
             // std::chrono::milliseconds tSleep(1);
             // std::this_thread::sleep_for(tSleep);
+        }   
+        else
+        {
+            // 방어적: 루프가 과도하게 CPU를 먹지 않도록
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     }
 }
