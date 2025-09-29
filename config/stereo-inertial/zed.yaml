@@ -17,7 +17,7 @@ Camera.p1: 0.0
 Camera.p2: 0.0
 
 Camera.width: 960
-Camera.height: 600
+Camera.height: 540
 
 # Camera frames per second 
 Camera.fps: 13

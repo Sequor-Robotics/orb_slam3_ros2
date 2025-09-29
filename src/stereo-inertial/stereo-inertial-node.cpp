@@ -6,7 +6,10 @@
 using std::placeholders::_1;
 
 StereoInertialNode::StereoInertialNode(ORB_SLAM3::System *SLAM, const string &strSettingsFile, const string &strDoRectify, const string &strDoEqual) :
-    Node("ORB_SLAM3_ROS2"),
+    Node("ORB_SLAM3_ROS2", rclcpp::NodeOptions()
+                                   .start_parameter_services(false)        // 파라미터 서비스 끔
+                                   .start_parameter_event_publisher(false) // 파라미터 이벤트 퍼블리셔 끔
+                                   .automatically_declare_parameters_from_overrides(false)), // 필요 시),
     SLAM_(SLAM)
 {
     stringstream ss_rec(strDoRectify);
