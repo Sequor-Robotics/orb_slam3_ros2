@@ -1,0 +1,733 @@
+[0.000000] (-) TimerEvent: {}
+[0.000121] (orbslam3) JobQueued: {'identifier': 'orbslam3', 'dependencies': OrderedDict()}
+[0.000172] (orbslam3) JobStarted: {'identifier': 'orbslam3'}
+[0.003831] (orbslam3) JobProgress: {'identifier': 'orbslam3', 'progress': 'cmake'}
+[0.004253] (orbslam3) JobProgress: {'identifier': 'orbslam3', 'progress': 'build'}
+[0.004792] (orbslam3) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/build/orbslam3', '--', '-j28', '-l28'], 'cwd': '/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/build/orbslam3', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('DOCKER_DATASETS', '/home/yechan/datasets'), ('LANGUAGE', 'ko:en'), ('USER', 'yechan'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('FOLDER', '/home/yechan/datasets'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-12.6/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/yechan'), ('OLDPWD', '/home/yechan/orb_slam3_ros2/src'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '3015'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b7c3ed9729c47552ad8d267668bed847'), ('COLORTERM', 'truecolor'), ('DOCKER_CATKINWS', '/home/yechan/msckf'), ('COLCON_PREFIX_PATH', '/home/yechan/orb_slam3_ros2/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'yechan'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'yechan'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/cuda-12.6/bin:/opt/ros/humble/bin:/home/yechan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/yechan:@/tmp/.ICE-unix/3015,unix/yechan:/tmp/.ICE-unix/3015'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b33f8e64_b76c_4a47_86f0_77507060b7a7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'ko_KR.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.286'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/yechan/orb_slam3_ros2/install/orbslam3:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/build/orbslam3'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b7c3ed9729c47552ad8d267668bed847'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/yechan/orb_slam3_ros2/install/orbslam3:/opt/ros/humble')]), 'shell': False}
+[0.034396] (orbslam3) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target stereo-inertial\x1b[0m\n'}
+[0.044756] (orbslam3) StdoutLine: {'line': b'[ 21%] Built target mono\n'}
+[0.045761] (orbslam3) StdoutLine: {'line': b'[ 50%] Built target rgbd\n'}
+[0.045838] (orbslam3) StdoutLine: {'line': b'[ 71%] Built target stereo\n'}
+[0.050069] (orbslam3) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/stereo-inertial.dir/src/stereo-inertial/stereo-inertial-node.cpp.o\x1b[0m\n'}
+[0.099643] (-) TimerEvent: {}
+[0.199938] (-) TimerEvent: {}
+[0.300286] (-) TimerEvent: {}
+[0.400707] (-) TimerEvent: {}
+[0.500904] (-) TimerEvent: {}
+[0.601183] (-) TimerEvent: {}
+[0.701490] (-) TimerEvent: {}
+[0.801796] (-) TimerEvent: {}
+[0.902077] (-) TimerEvent: {}
+[1.002361] (-) TimerEvent: {}
+[1.102654] (-) TimerEvent: {}
+[1.202959] (-) TimerEvent: {}
+[1.303281] (-) TimerEvent: {}
+[1.403606] (-) TimerEvent: {}
+[1.503902] (-) TimerEvent: {}
+[1.604200] (-) TimerEvent: {}
+[1.704511] (-) TimerEvent: {}
+[1.804810] (-) TimerEvent: {}
+[1.905111] (-) TimerEvent: {}
+[2.005417] (-) TimerEvent: {}
+[2.105723] (-) TimerEvent: {}
+[2.206021] (-) TimerEvent: {}
+[2.277975] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:30\x1b[m\x1b[K,\n'}
+[2.278105] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.278132] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.278153] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.278172] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.278191] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.278209] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.278226] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.278248] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.278267] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/ImuTypes.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ORB_SLAM3::IMU::Preintegrated::printMeasurements() const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.278286] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/ImuTypes.h:204:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<ORB_SLAM3::IMU::Preintegrated::integrable>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.278309] (orbslam3) StderrLine: {'line': b'  204 |         for(int i=0; \x1b[01;35m\x1b[Ki<mvMeasurements.size()\x1b[m\x1b[K; i++){\n'}
+[2.278328] (orbslam3) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.306205] (-) TimerEvent: {}
+[2.320358] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37\x1b[m\x1b[K,\n'}
+[2.320455] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.320592] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.320620] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.320641] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.320661] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.320680] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.320697] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.320714] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.320732] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.320751] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.320770] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h:\x1b[m\x1b[K At global scope:\n'}
+[2.320787] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:74:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.320813] (orbslam3) StderrLine: {'line': b'   62 |     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & \x1b[01;35m\x1b[KAlignedBit\x1b[m\x1b[K ? Aligned : Unaligned >  HessianBlockType;\n'}
+[2.320831] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.320859] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.320876] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.320894] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.320911] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.320928] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.320945] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.320963] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.320979] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.320996] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.321013] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.321030] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.321046] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.321062] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.321080] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.321098] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.321116] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.321132] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.330594] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.330654] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.330679] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.330703] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.330721] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.330740] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.330757] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.330774] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.330792] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.330810] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.330829] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.330846] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:82:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.330873] (orbslam3) StderrLine: {'line': b'   59 |       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & \x1b[01;35m\x1b[KAlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockType;\n'}
+[2.330891] (orbslam3) StderrLine: {'line': b'      |                                                                                  \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.330908] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.330925] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.330942] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.330959] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.330975] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.330992] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.331009] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.331025] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.331041] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.331057] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.331073] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.331089] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.331105] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.331126] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.331141] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.331159] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.331175] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.331191] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.331208] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.331223] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.331239] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.331255] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.331270] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.331287] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.331303] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.331318] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.331334] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.331355] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.331374] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:82:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.331393] (orbslam3) StderrLine: {'line': b'   60 |       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & \x1b[01;35m\x1b[KAlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockTransposedType;\n'}
+[2.331409] (orbslam3) StderrLine: {'line': b'      |                                                                                  \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.331426] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.331441] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.331458] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.331474] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.331490] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.331506] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.331522] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.331538] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.331554] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.331570] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.331586] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.331602] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.331620] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.331637] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.331653] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.331669] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.331686] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.352046] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:41\x1b[m\x1b[K,\n'}
+[2.352128] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.352152] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.352171] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.352189] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.352206] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.352223] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.352239] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.352262] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.352278] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.352297] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.352314] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/se3quat.h:43:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic\x07-Wpedantic\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.352334] (orbslam3) StderrLine: {'line': b'   43 |       EIGEN_MAKE_ALIGNED_OPERATOR_NEW\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[2.352354] (orbslam3) StderrLine: {'line': b'      |                                      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[2.352371] (orbslam3) StderrLine: {'line': b'      |                                      \x1b[31m\x1b[K-\x1b[m\x1b[K\n'}
+[2.406386] (-) TimerEvent: {}
+[2.506677] (-) TimerEvent: {}
+[2.606983] (-) TimerEvent: {}
+[2.707289] (-) TimerEvent: {}
+[2.776159] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37\x1b[m\x1b[K,\n'}
+[2.776280] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.776304] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.776323] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.776341] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.776364] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.776389] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.776414] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.776432] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.776454] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.776472] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.776491] (orbslam3) StderrLine: {'line': b'/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass g2o::BaseVertex<3, Eigen::Matrix<double, 3, 1> >\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.776508] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_sba.h:40:35:\x1b[m\x1b[K   required from here\n'}
+[2.776524] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.776544] (orbslam3) StderrLine: {'line': b'   62 |     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned >  HessianBlockType;\n'}
+[2.776562] (orbslam3) StderrLine: {'line': b'      |                                                                  \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.776579] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.776595] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.776612] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.776629] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.776649] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.776665] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.776681] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.776698] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.776714] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.776730] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.776748] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.776766] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.776784] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.776801] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.776817] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.776835] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.776852] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.790632] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37\x1b[m\x1b[K,\n'}
+[2.790715] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.790739] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.790760] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.790795] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.790814] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.790832] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.790850] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.790869] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.790894] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.790924] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.790950] (orbslam3) StderrLine: {'line': b'/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass g2o::BaseVertex<6, g2o::SE3Quat>\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.790978] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:59:33:\x1b[m\x1b[K   required from here\n'}
+[2.790996] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.791017] (orbslam3) StderrLine: {'line': b'   62 |     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned >  HessianBlockType;\n'}
+[2.791060] (orbslam3) StderrLine: {'line': b'      |                                                                  \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.791077] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.791093] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.791112] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.791129] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.791145] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.791162] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.791179] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.791195] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.791213] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.791229] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.791246] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.791262] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.791278] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.791295] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.791311] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.791327] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.791343] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.805804] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.805874] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.805898] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.805917] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.805944] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.805961] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.805979] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.805996] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.806015] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.806032] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.806049] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.806066] (orbslam3) StderrLine: {'line': b'/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass g2o::BaseBinaryEdge<6, g2o::SE3Quat, g2o::VertexSE3Expmap, g2o::VertexSE3Expmap>\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.806084] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:83:24:\x1b[m\x1b[K   required from here\n'}
+[2.806100] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.806123] (orbslam3) StderrLine: {'line': b'   59 |       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockType;\n'}
+[2.806141] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.806157] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.806173] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.806190] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.806206] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.806223] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.806239] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.806256] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.806271] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.806287] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.806303] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.806320] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.806338] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.806368] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.806395] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.806412] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.806429] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.806447] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.806464] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.806484] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.806500] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.806524] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.806540] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.806557] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.806577] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.806593] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.806609] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.806626] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.806644] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.806660] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.806681] (orbslam3) StderrLine: {'line': b'   60 |       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockTransposedType;\n'}
+[2.806698] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.806715] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.806733] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.806750] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.806767] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.806783] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.806799] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.806815] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.806831] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.806847] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.806863] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.806880] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.806897] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.806912] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.806928] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.806944] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.806961] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.806977] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.807335] (-) TimerEvent: {}
+[2.839949] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.840053] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.840077] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.840097] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.840116] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.840134] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.840152] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.840174] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.840191] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.840208] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.840227] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.840244] (orbslam3) StderrLine: {'line': b'/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass g2o::BaseBinaryEdge<2, Eigen::Matrix<double, 2, 1>, g2o::VertexSBAPointXYZ, g2o::VertexSE3Expmap>\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.840263] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:114:35:\x1b[m\x1b[K   required from here\n'}
+[2.840280] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.840299] (orbslam3) StderrLine: {'line': b'   59 |       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockType;\n'}
+[2.840323] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.840339] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.840364] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.840384] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.840409] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.840426] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.840444] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.840462] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.840478] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.840494] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.840510] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.840526] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.840542] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.840560] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.840578] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.840599] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.840615] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.840632] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.847170] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.847225] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.847249] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.847268] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.847288] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.847307] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.847325] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.847341] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.847363] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.847381] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.847421] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.847439] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.847464] (orbslam3) StderrLine: {'line': b'   60 |       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockTransposedType;\n'}
+[2.847483] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.847501] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.847522] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.847538] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.847555] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.847571] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.847588] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.847604] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.847622] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.847638] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.847654] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.847671] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.847688] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.847705] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.847721] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.847737] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.847753] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.847770] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.877057] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.877215] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.877236] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.877255] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.877278] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.877303] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.877324] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.877343] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.877365] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.877394] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.877417] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.877438] (orbslam3) StderrLine: {'line': b'/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass g2o::BaseBinaryEdge<3, Eigen::Matrix<double, 3, 1>, g2o::VertexSBAPointXYZ, g2o::VertexSE3Expmap>\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.877463] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:146:41:\x1b[m\x1b[K   required from here\n'}
+[2.877480] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.877500] (orbslam3) StderrLine: {'line': b'   59 |       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockType;\n'}
+[2.877518] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.877538] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.877555] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.877573] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.877591] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.877611] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.877628] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.877644] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.877660] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.877676] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.877693] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.877709] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.877728] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.877745] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.877762] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.877781] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.877798] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.877815] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.877831] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.877847] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.877863] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.877880] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.877900] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.877916] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.877932] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.877949] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.877974] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.877998] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.878021] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.878043] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.878062] (orbslam3) StderrLine: {'line': b'   60 |       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockTransposedType;\n'}
+[2.878080] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.878096] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.878113] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.878129] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.878145] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.878161] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.878178] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.878194] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.878212] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.878228] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.878245] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.878260] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.878277] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.878294] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.878310] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.878327] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.878348] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.878373] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.907450] (-) TimerEvent: {}
+[2.982031] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37\x1b[m\x1b[K,\n'}
+[2.982145] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.982170] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.982190] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.982208] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.982234] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.982251] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.982269] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.982287] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.982305] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.982322] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.982339] (orbslam3) StderrLine: {'line': b'/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass g2o::BaseVertex<7, g2o::Sim3>\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.982363] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:48:35:\x1b[m\x1b[K   required from here\n'}
+[2.982390] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.982412] (orbslam3) StderrLine: {'line': b'   62 |     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned >  HessianBlockType;\n'}
+[2.982430] (orbslam3) StderrLine: {'line': b'      |                                                                  \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.982447] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.982464] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.982480] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.982504] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.982520] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.982537] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.982554] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.982570] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.982586] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.982602] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.982618] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.982635] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.982652] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.982670] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.982686] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.982702] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.982718] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.997861] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.997933] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.997953] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.997971] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.997990] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.998012] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.998029] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.998050] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.998067] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.998084] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.998101] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.998120] (orbslam3) StderrLine: {'line': b'/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass g2o::BaseBinaryEdge<7, g2o::Sim3, g2o::VertexSim3Expmap, g2o::VertexSim3Expmap>\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.998139] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:99:27:\x1b[m\x1b[K   required from here\n'}
+[2.998156] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.998176] (orbslam3) StderrLine: {'line': b'   59 |       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockType;\n'}
+[2.998193] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.998209] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.998225] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.998241] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.998257] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.998273] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.998289] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.998305] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.998321] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.998337] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.998354] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.998371] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.998388] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.998404] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.998420] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.998441] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.998457] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.998473] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.998490] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[2.998508] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[2.998524] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[2.998540] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.998556] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.998572] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.998587] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.998603] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.998618] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.998634] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.998650] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.998666] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.998684] (orbslam3) StderrLine: {'line': b'   60 |       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockTransposedType;\n'}
+[2.998701] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.998720] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[2.998737] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[2.998754] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[2.998794] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[2.998810] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[2.998826] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[2.998843] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[2.998859] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[2.998875] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[2.998891] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[2.998907] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[2.998923] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[2.998938] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[2.998954] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[2.998969] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.998986] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[2.999002] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.007507] (-) TimerEvent: {}
+[3.018122] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[3.018183] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[3.018206] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[3.018224] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[3.018242] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[3.018259] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[3.018280] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[3.018296] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[3.018313] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[3.018330] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[3.018349] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[3.018367] (orbslam3) StderrLine: {'line': b'/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kclass g2o::BaseBinaryEdge<2, Eigen::Matrix<double, 2, 1>, g2o::VertexSBAPointXYZ, g2o::VertexSim3Expmap>\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.018398] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:130:36:\x1b[m\x1b[K   required from here\n'}
+[3.018415] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.018438] (orbslam3) StderrLine: {'line': b'   59 |       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockType;\n'}
+[3.018456] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.018473] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[3.018494] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[3.018514] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[3.018530] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[3.018546] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[3.018563] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[3.018579] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[3.018595] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[3.018611] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[3.018628] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[3.018644] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[3.018660] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[3.018676] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[3.018692] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[3.018713] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[3.018731] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[3.018752] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.025186] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38\x1b[m\x1b[K,\n'}
+[3.025220] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Converter.h:26\x1b[m\x1b[K,\n'}
+[3.025238] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:33\x1b[m\x1b[K,\n'}
+[3.025256] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[3.025274] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[3.025293] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[3.025309] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[3.025325] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[3.025341] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[3.025361] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[3.025384] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[3.025405] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KEigen::AlignedBit\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations\x07-Wdeprecated-declarations\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.025423] (orbslam3) StderrLine: {'line': b'   60 |       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::\x1b[01;35m\x1b[KFlags & AlignedBit\x1b[m\x1b[K ? Aligned : Unaligned > HessianBlockTransposedType;\n'}
+[3.025440] (orbslam3) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.025457] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:161\x1b[m\x1b[K,\n'}
+[3.025473] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/LU:11\x1b[m\x1b[K,\n'}
+[3.025493] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/so2.hpp:12\x1b[m\x1b[K,\n'}
+[3.025509] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/se2.hpp:7\x1b[m\x1b[K,\n'}
+[3.025525] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/Thirdparty/Sophus/sophus/geometry.hpp:7\x1b[m\x1b[K,\n'}
+[3.025542] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Frame.h:28\x1b[m\x1b[K,\n'}
+[3.025558] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/KeyFrame.h:28\x1b[m\x1b[K,\n'}
+[3.025574] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/MapPoint.h:23\x1b[m\x1b[K,\n'}
+[3.025589] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:24\x1b[m\x1b[K,\n'}
+[3.025606] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[3.025626] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[3.025642] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[3.025658] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[3.025674] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[3.025692] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/Constants.h:167:37:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[3.025709] (orbslam3) StderrLine: {'line': b'  167 | EIGEN_DEPRECATED const unsigned int \x1b[01;36m\x1b[KAlignedBit\x1b[m\x1b[K = 0x80;\n'}
+[3.025725] (orbslam3) StderrLine: {'line': b'      |                                     \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.107602] (-) TimerEvent: {}
+[3.207870] (-) TimerEvent: {}
+[3.308081] (-) TimerEvent: {}
+[3.316503] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Atlas.h:26\x1b[m\x1b[K,\n'}
+[3.316595] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:25\x1b[m\x1b[K,\n'}
+[3.316619] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[3.316639] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[3.316657] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[3.316678] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[3.316698] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[3.316715] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool ORB_SLAM3::Pinhole::matchAndtriangulate(const cv::KeyPoint&, const cv::KeyPoint&, ORB_SLAM3::GeometricCamera*, Sophus::SE3f&, Sophus::SE3f&, float, float, Eigen::Vector3f&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.316735] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:83:54:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kkp1\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.316754] (orbslam3) StderrLine: {'line': b'   83 |         bool matchAndtriangulate(\x1b[01;35m\x1b[Kconst cv::KeyPoint& kp1\x1b[m\x1b[K, const cv::KeyPoint& kp2, GeometricCamera* pOther,\n'}
+[3.316773] (orbslam3) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[3.316789] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:83:79:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kkp2\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.316807] (orbslam3) StderrLine: {'line': b'   83 |         bool matchAndtriangulate(const cv::KeyPoint& kp1, \x1b[01;35m\x1b[Kconst cv::KeyPoint& kp2\x1b[m\x1b[K, GeometricCamera* pOther,\n'}
+[3.316823] (orbslam3) StderrLine: {'line': b'      |                                                           \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[3.316874] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:83:101:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KpOther\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.316893] (orbslam3) StderrLine: {'line': b'   83 |         bool matchAndtriangulate(const cv::KeyPoint& kp1, const cv::KeyPoint& kp2, \x1b[01;35m\x1b[KGeometricCamera* pOther\x1b[m\x1b[K,\n'}
+[3.316963] (orbslam3) StderrLine: {'line': b'      |                                                                                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.316982] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:84:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KTcw1\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317002] (orbslam3) StderrLine: {'line': b'   84 |                                  \x1b[01;35m\x1b[KSophus::SE3f& Tcw1\x1b[m\x1b[K, Sophus::SE3f& Tcw2,\n'}
+[3.317026] (orbslam3) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[3.317070] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:84:68:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KTcw2\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317089] (orbslam3) StderrLine: {'line': b'   84 |                                  Sophus::SE3f& Tcw1, \x1b[01;35m\x1b[KSophus::SE3f& Tcw2\x1b[m\x1b[K,\n'}
+[3.317108] (orbslam3) StderrLine: {'line': b'      |                                                      \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[3.317130] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:85:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KsigmaLevel1\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317151] (orbslam3) StderrLine: {'line': b'   85 |                                  \x1b[01;35m\x1b[Kconst float sigmaLevel1\x1b[m\x1b[K, const float sigmaLevel2,\n'}
+[3.317192] (orbslam3) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.317212] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:85:71:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KsigmaLevel2\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317232] (orbslam3) StderrLine: {'line': b'   85 |                                  const float sigmaLevel1, \x1b[01;35m\x1b[Kconst float sigmaLevel2\x1b[m\x1b[K,\n'}
+[3.317251] (orbslam3) StderrLine: {'line': b'      |                                                           \x1b[01;35m\x1b[K~~~~~~~~~~~~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.317270] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/Pinhole.h:86:51:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kx3Dtriangulated\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317290] (orbslam3) StderrLine: {'line': b'   86 |                                  \x1b[01;35m\x1b[KEigen::Vector3f& x3Dtriangulated\x1b[m\x1b[K) { return false;}\n'}
+[3.317309] (orbslam3) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.317328] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Atlas.h:27\x1b[m\x1b[K,\n'}
+[3.317352] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:25\x1b[m\x1b[K,\n'}
+[3.317372] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[3.317390] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[3.317406] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[3.317462] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[3.317480] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[3.317497] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KORB_SLAM3::KannalaBrandt8::KannalaBrandt8(std::vector<float>)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.317514] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:102:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KORB_SLAM3::KannalaBrandt8::precision\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317533] (orbslam3) StderrLine: {'line': b'  102 |         const float \x1b[01;35m\x1b[Kprecision\x1b[m\x1b[K;\n'}
+[3.317550] (orbslam3) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.317566] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:88:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int> ORB_SLAM3::KannalaBrandt8::mvLappingArea\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317586] (orbslam3) StderrLine: {'line': b'   88 |         std::vector<int> \x1b[01;35m\x1b[KmvLappingArea\x1b[m\x1b[K;\n'}
+[3.317603] (orbslam3) StderrLine: {'line': b'      |                          \x1b[01;35m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.317621] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Atlas.h:27\x1b[m\x1b[K,\n'}
+[3.317637] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:25\x1b[m\x1b[K,\n'}
+[3.317654] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[3.317671] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[3.317687] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[3.317703] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[3.317724] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[3.317740] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:47:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317757] (orbslam3) StderrLine: {'line': b'   47 |         \x1b[01;35m\x1b[KKannalaBrandt8\x1b[m\x1b[K(const std::vector<float> _vParameters) : GeometricCamera(_vParameters), precision(1e-6), mvLappingArea(2,0) ,tvr(nullptr) {\n'}
+[3.317774] (orbslam3) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.317790] (orbslam3) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Atlas.h:27\x1b[m\x1b[K,\n'}
+[3.317806] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/FrameDrawer.h:25\x1b[m\x1b[K,\n'}
+[3.317823] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Viewer.h:23\x1b[m\x1b[K,\n'}
+[3.317840] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/Tracking.h:26\x1b[m\x1b[K,\n'}
+[3.317855] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/System.h:31\x1b[m\x1b[K,\n'}
+[3.317871] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.hpp:19\x1b[m\x1b[K,\n'}
+[3.317887] (orbslam3) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:1\x1b[m\x1b[K:\n'}
+[3.317903] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KORB_SLAM3::KannalaBrandt8::KannalaBrandt8(std::vector<float>, float)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.317919] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:102:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KORB_SLAM3::KannalaBrandt8::precision\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317937] (orbslam3) StderrLine: {'line': b'  102 |         const float \x1b[01;35m\x1b[Kprecision\x1b[m\x1b[K;\n'}
+[3.317953] (orbslam3) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.317969] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:88:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int> ORB_SLAM3::KannalaBrandt8::mvLappingArea\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.317986] (orbslam3) StderrLine: {'line': b'   88 |         std::vector<int> \x1b[01;35m\x1b[KmvLappingArea\x1b[m\x1b[K;\n'}
+[3.318002] (orbslam3) StderrLine: {'line': b'      |                          \x1b[01;35m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.318018] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:53:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.318034] (orbslam3) StderrLine: {'line': b'   53 |         \x1b[01;35m\x1b[KKannalaBrandt8\x1b[m\x1b[K(const std::vector<float> _vParameters, const float _precision) : GeometricCamera(_vParameters),\n'}
+[3.318051] (orbslam3) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.318066] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KORB_SLAM3::KannalaBrandt8::KannalaBrandt8(ORB_SLAM3::KannalaBrandt8*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.318083] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:102:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KORB_SLAM3::KannalaBrandt8::precision\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.318101] (orbslam3) StderrLine: {'line': b'  102 |         const float \x1b[01;35m\x1b[Kprecision\x1b[m\x1b[K;\n'}
+[3.318117] (orbslam3) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.318133] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:88:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int> ORB_SLAM3::KannalaBrandt8::mvLappingArea\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.318150] (orbslam3) StderrLine: {'line': b'   88 |         std::vector<int> \x1b[01;35m\x1b[KmvLappingArea\x1b[m\x1b[K;\n'}
+[3.318166] (orbslam3) StderrLine: {'line': b'      |                          \x1b[01;35m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.318182] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb/ORB-SLAM3/include/CameraModels/KannalaBrandt8.h:59:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.318198] (orbslam3) StderrLine: {'line': b'   59 |         \x1b[01;35m\x1b[KKannalaBrandt8\x1b[m\x1b[K(KannalaBrandt8* pKannala) : GeometricCamera(pKannala->mvParameters), precision(pKannala->precision), mvLappingArea(2,0) ,tvr(nullptr) {\n'}
+[3.318214] (orbslam3) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.408218] (-) TimerEvent: {}
+[3.479248] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid StereoInertialNode::SyncWithImu()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.479360] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:279:1:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kjump to label \xe2\x80\x98\x1b[01m\x1b[Kcontinue_sync\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.479388] (orbslam3) StderrLine: {'line': b'  279 | \x1b[01;31m\x1b[Kcontinue_sync\x1b[m\x1b[K:\n'}
+[3.479410] (orbslam3) StderrLine: {'line': b'      | \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.479430] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:224:26:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  from here\n'}
+[3.479458] (orbslam3) StderrLine: {'line': b'  224 |                     goto \x1b[01;36m\x1b[Kcontinue_sync\x1b[m\x1b[K;\n'}
+[3.479476] (orbslam3) StderrLine: {'line': b'      |                          \x1b[01;36m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.479494] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:260:29:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  crosses initialization of \xe2\x80\x98\x1b[01m\x1b[KEigen::Vector3f Wbb\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.479516] (orbslam3) StderrLine: {'line': b'  260 |             Eigen::Vector3f \x1b[01;36m\x1b[KWbb\x1b[m\x1b[K; // body angular velocity in body frame\n'}
+[3.479534] (orbslam3) StderrLine: {'line': b'      |                             \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[3.479552] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:259:43:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  crosses initialization of \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<ORB_SLAM3::IMU::Point> vImuMeas\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.479572] (orbslam3) StderrLine: {'line': b'  259 |             vector<ORB_SLAM3::IMU::Point> \x1b[01;36m\x1b[KvImuMeas\x1b[m\x1b[K;\n'}
+[3.479590] (orbslam3) StderrLine: {'line': b'      |                                           \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.479608] (orbslam3) StderrLine: {'line': b'\x1b[01m\x1b[K/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/src/stereo-inertial/stereo-inertial-node.cpp:229:32:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  crosses initialization of \xe2\x80\x98\x1b[01m\x1b[Kconst rclcpp::Time stamp_left\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.479625] (orbslam3) StderrLine: {'line': b'  229 |             const rclcpp::Time \x1b[01;36m\x1b[Kstamp_left\x1b[m\x1b[K = left_msg->header.stamp;\n'}
+[3.479643] (orbslam3) StderrLine: {'line': b'      |                                \x1b[01;36m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.508286] (-) TimerEvent: {}
+[3.608561] (-) TimerEvent: {}
+[3.708779] (-) TimerEvent: {}
+[3.809067] (-) TimerEvent: {}
+[3.909366] (-) TimerEvent: {}
+[4.009645] (-) TimerEvent: {}
+[4.109949] (-) TimerEvent: {}
+[4.210241] (-) TimerEvent: {}
+[4.310511] (-) TimerEvent: {}
+[4.410710] (-) TimerEvent: {}
+[4.510892] (-) TimerEvent: {}
+[4.611078] (-) TimerEvent: {}
+[4.711292] (-) TimerEvent: {}
+[4.811493] (-) TimerEvent: {}
+[4.911677] (-) TimerEvent: {}
+[5.011953] (-) TimerEvent: {}
+[5.112143] (-) TimerEvent: {}
+[5.212454] (-) TimerEvent: {}
+[5.312652] (-) TimerEvent: {}
+[5.412848] (-) TimerEvent: {}
+[5.513092] (-) TimerEvent: {}
+[5.613412] (-) TimerEvent: {}
+[5.713645] (-) TimerEvent: {}
+[5.813837] (-) TimerEvent: {}
+[5.914024] (-) TimerEvent: {}
+[6.014241] (-) TimerEvent: {}
+[6.114457] (-) TimerEvent: {}
+[6.214645] (-) TimerEvent: {}
+[6.314854] (-) TimerEvent: {}
+[6.415036] (-) TimerEvent: {}
+[6.515219] (-) TimerEvent: {}
+[6.615414] (-) TimerEvent: {}
+[6.715602] (-) TimerEvent: {}
+[6.815790] (-) TimerEvent: {}
+[6.915979] (-) TimerEvent: {}
+[7.016163] (-) TimerEvent: {}
+[7.116403] (-) TimerEvent: {}
+[7.216603] (-) TimerEvent: {}
+[7.316802] (-) TimerEvent: {}
+[7.416994] (-) TimerEvent: {}
+[7.517191] (-) TimerEvent: {}
+[7.617425] (-) TimerEvent: {}
+[7.696215] (orbslam3) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/stereo-inertial.dir/build.make:90: CMakeFiles/stereo-inertial.dir/src/stereo-inertial/stereo-inertial-node.cpp.o] \xec\x98\xa4\xeb\xa5\x98 1\n'}
+[7.696596] (orbslam3) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:221: CMakeFiles/stereo-inertial.dir/all] \xec\x98\xa4\xeb\xa5\x98 2\n'}
+[7.697043] (orbslam3) StderrLine: {'line': b'gmake: *** [Makefile:146: all] \xec\x98\xa4\xeb\xa5\x98 2\n'}
+[7.698939] (orbslam3) CommandEnded: {'returncode': 2}
+[7.704748] (orbslam3) JobEnded: {'identifier': 'orbslam3', 'rc': 2}
+[7.715049] (-) EventReactorShutdown: {}

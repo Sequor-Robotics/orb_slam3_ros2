@@ -208,21 +208,53 @@ void StereoInertialNode::SyncWithImu()
                 RCLCPP_INFO_ONCE(this->get_logger(), "big time difference");
                 continue;
             }
+
+
             if (tImLeft > Utility::StampToSec(imuBuf_.back()->header.stamp))
-                continue;
+            //     continue;
+            // 최신 IMU 타임스탬프를 잠금 상태에서 읽어 경합/UB 방지
+            {
+                double latest_imu_ts = 0.0;
+                {
+                    std::lock_guard<std::mutex> lk(bufMutex_);
+                    if (!imuBuf_.empty())
+                        latest_imu_ts = Utility::StampToSec(imuBuf_.back()->header.stamp);
+                }
+                if (tImLeft > latest_imu_ts)
+                    continue;
+            }
+
 
             // Use the exact subscribed timestamp from the (synced) left image
             const rclcpp::Time stamp_left = left_msg->header.stamp;
 
-            bufMutexLeft_.lock();
-            imLeft = GetImage(left_msg);
-            imgLeftBuf_.pop();
-            bufMutexLeft_.unlock();
+            // bufMutexLeft_.lock();
+            // imLeft = GetImage(left_msg);
+            // imgLeftBuf_.pop();
+            // bufMutexLeft_.unlock();
 
-            bufMutexRight_.lock();
-            imRight = GetImage(right_msg);
-            imgRightBuf_.pop();
-            bufMutexRight_.unlock();
+            {
+                std::lock_guard<std::mutex> lk(bufMutexLeft_);
+                if (imgLeftBuf_.empty()) { continue; }
+                auto cur_left = imgLeftBuf_.front();
+                if (cur_left != left_msg) { continue; }
+                imLeft = GetImage(cur_left);
+                imgLeftBuf_.pop();
+            }
+
+            {
+                std::lock_guard<std::mutex> lk(bufMutexRight_);
+                if (imgRightBuf_.empty()) { continue; }
+                auto cur_right = imgRightBuf_.front();
+                if (cur_right != right_msg) { continue; }
+                imRight = GetImage(cur_right);
+                imgRightBuf_.pop();
+            }
+
+            // bufMutexRight_.lock();
+            // imRight = GetImage(right_msg);
+            // imgRightBuf_.pop();
+            // bufMutexRight_.unlock();
 
             vector<ORB_SLAM3::IMU::Point> vImuMeas;
             Eigen::Vector3f Wbb; // body angular velocity in body frame
@@ -244,6 +276,7 @@ void StereoInertialNode::SyncWithImu()
             }
             bufMutex_.unlock();
 
+            
             if (bClahe_)
             {
                 clahe_->apply(imLeft, imLeft);

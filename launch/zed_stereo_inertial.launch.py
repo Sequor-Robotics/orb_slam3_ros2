@@ -37,7 +37,7 @@ def generate_launch_description():
     )
     declare_camera_name = DeclareLaunchArgument(
         "camera_name",
-        default_value="zed",
+        default_value="zedx",
         description="Base camera namespace (e.g., zed, zed2, zedx)",
     )
 
