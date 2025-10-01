@@ -83,7 +83,7 @@ $ ros2 run orbslam3 mono PATH_TO_VOCABULARY PATH_TO_YAML_CONFIG_FILE
 ```
 $ ros2 run orbslam3 rgbd PATH_TO_VOCABULARY PATH_TO_YAML_CONFIG_FILE
 ```
-  - ``STEREO & STEREO-INERTIAL` mode  
+  - ``STEREO & STEREO-INERTIAL`` mode  
 ```
 $ ros2 run orbslam3 PATH_TO_LAUNCH_FLIE
 ```
