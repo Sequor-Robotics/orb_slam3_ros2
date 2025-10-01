@@ -79,10 +79,6 @@ I modified only stereo-inertial node from the original repo.
 ```
 $ ros2 run orbslam3 mono PATH_TO_VOCABULARY PATH_TO_YAML_CONFIG_FILE
 ```
-  -  
-```
-$ ros2 run orbslam3 stereo PATH_TO_VOCABULARY PATH_TO_YAML_CONFIG_FILE BOOL_RECTIFY
-```
   - `RGBD` mode  
 ```
 $ ros2 run orbslam3 rgbd PATH_TO_VOCABULARY PATH_TO_YAML_CONFIG_FILE
