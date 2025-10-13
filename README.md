@@ -30,19 +30,20 @@ sudo apt install ros-$ROS_DISTRO-vision-opencv && sudo apt install ros-$ROS_DIST
 
 ## How to build
 
-1. The apt version of opencv-contrib in Jetson nano, jetpack 6.2 is 4.5.4, which inclue opencv-core needed to build. But the apt version of opencv is 4.8.0. You need to fit this. You have two options:
+1. The apt version of opencv-contrib in Jetson nano, jetpack 6.2 is 4.5.4, which inclue opencv-core needed to build. But the apt version of opencv is 4.8.0. You need to fit this. You have two options:   
 
-  a) If you want to set in 4.5.4:
+a) If you want to set in 4.5.4:
 ```
 sudo apt-get install -y \
   libopencv-dev=4.5.4+dfsg-9ubuntu4 \
   libopencv-contrib-dev=4.5.4+dfsg-9ubuntu4 
 ```
 
-  b) If you want to set with the version later that 4.5.4, you have to build opencv from source.
+b) If you want to set with the version later that 4.5.4, you have to build opencv from source.
 
-2. Build ORB_SLAM3
-  After fit opencv version, Go to this [repo](https://github.com/yckim4042/ORB-SLAM3-STEREO-FIXED) and follow build instruction.
+2. Build ORB_SLAM3   
+
+Go to this [repo](https://github.com/yckim4042/ORB-SLAM3-STEREO-FIXED) and follow build instruction.
 
 3. Clone repository to your ROS workspace
 ```
