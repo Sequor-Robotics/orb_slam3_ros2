@@ -1,1 +1,0 @@
-/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/build/orbslam3/ament_cmake_core/orbslam3Config.cmake

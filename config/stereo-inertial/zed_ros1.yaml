@@ -6,24 +6,24 @@
 Camera.type: "PinHole"
 
 # Camera calibration and distortion parameters (OpenCV) (equal for both cameras after stereo rectification)
-Camera.fx: 182.85269165039062
-Camera.fy: 182.85269165039062
-Camera.cx: 242.40817260742188
-Camera.cy: 153.84445190429688
+Camera.fx: 739.7797241210938
+Camera.fy: 739.7797241210938
+Camera.cx: 979.8992309570312
+Camera.cy: 630.837646484375
 
 Camera.k1: 0.0
 Camera.k2: 0.0
 Camera.p1: 0.0
 Camera.p2: 0.0
 
-Camera.width: 480
-Camera.height: 300
+Camera.width: 1920
+Camera.height: 1200
 
 # Camera frames per second 
-Camera.fps: 26
+Camera.fps: 23
 
 # stereo baseline times fx
-Camera.bf: 21.942324
+Camera.bf: 88.773566895
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 0
@@ -46,27 +46,27 @@ IMU.NoiseGyro: 1.7e-04 # 1.6968e-04
 IMU.NoiseAcc: 2.0e-03 # 2.0000e-3
 IMU.GyroWalk: 1.9393e-05 
 IMU.AccWalk: 3.e-03 # 3.0000e-3
-IMU.Frequency: 130      
+IMU.Frequency: 190      
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 1200
+ORBextractor.nFeatures: 3500
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
-ORBextractor.scaleFactor: 1.2
+ORBextractor.scaleFactor: 1.3
 
 # ORB Extractor: Number of levels in the scale pyramid	
-ORBextractor.nLevels: 8 
+ORBextractor.nLevels: 12
 
 # ORB Extractor: Fast threshold
 # Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
 # Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
 # You can lower these values if your images have low contrast			
-ORBextractor.iniThFAST: 20
-ORBextractor.minThFAST: 7
+ORBextractor.iniThFAST: 15
+ORBextractor.minThFAST: 5
 
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters

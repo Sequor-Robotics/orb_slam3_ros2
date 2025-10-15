@@ -1,1 +1,0 @@
-/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/launch/zed_stereo_inertial.launch.py

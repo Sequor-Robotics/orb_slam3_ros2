@@ -1,2 +1,0 @@
-Invoking command in '/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/build/orbslam3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/build/orbslam3 -- -j28 -l28
-Invoked command in '/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/build/orbslam3' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/build/orbslam3 -- -j28 -l28

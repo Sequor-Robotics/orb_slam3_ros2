@@ -1,1 +1,0 @@
-/home/yechan/orb_slam3_ros2/src/orb_slam3_ros2/config/stereo/TUM_TimeStamps/dataset-outdoors4_512.txt

@@ -164,14 +164,31 @@ cv::Mat StereoInertialNode::GetImage(const ImageMsg::SharedPtr msg)
 
 void StereoInertialNode::SyncWithImu()
 {
-    const double maxTimeDiff = 0.01;
+    // === 튜너블 파라미터(원하면 ROS param으로 뺄 것) ===
+    const double maxTimeDiff = this->has_parameter("max_time_diff")
+                               ? this->get_parameter("max_time_diff").as_double()
+                               : 0.3;             // 이미지-이미지 동기 허용 오차 (기본 0.3s)
+    const double imuLeadLimit = this->has_parameter("imu_lead_limit")
+                                ? this->get_parameter("imu_lead_limit").as_double()
+                                : 0.5;             // IMU가 이미지보다 많이 '미리' 온 경우 버림 한계
+    const double imuLagLimit  = this->has_parameter("imu_lag_limit")
+                                ? this->get_parameter("imu_lag_limit").as_double()
+                                : 0.5;             // IMU가 이미지보다 많이 '늦게' 온 경우 대기 한계
+    const double warmupSec    = this->has_parameter("warmup_sec")
+                                ? this->get_parameter("warmup_sec").as_double()
+                                : 0.5;             // 첫 프레임에서 통합할 사전 IMU 구간 길이
+    const int    minImuCount  = this->has_parameter("min_imu_count")
+                                ? this->get_parameter("min_imu_count").as_int()
+                                : 2;               // 한 프레임당 최소 IMU 샘플 수(경험치)
+
+    // 직전에 처리한 좌이미지 시각(초) - 첫 회에는 NaN
+    static double last_img_ts = std::numeric_limits<double>::quiet_NaN();
 
     while (1)
     {
         RCLCPP_INFO_ONCE(this->get_logger(), "SLAM running...");
-        cv::Mat imLeft, imRight;
-        double tImLeft = 0, tImRight = 0;
-        // --- 안전한 버퍼 상태 점검 (뮤텍스 보호) ---
+
+        // --- 버퍼 상태 확인(락 최소화) ---
         bool hasLeft = false, hasRight = false, hasImu = false;
         {
             std::lock_guard<std::mutex> lkL(bufMutexLeft_);
@@ -186,204 +203,203 @@ void StereoInertialNode::SyncWithImu()
             hasImu = !imuBuf_.empty();
         }
 
-        if (!(hasLeft && hasRight && hasImu))
-        {
-            // 바쁜 대기 방지
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        if (!(hasLeft && hasRight && hasImu)) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(2));
             continue;
         }
 
-        if (hasLeft && hasRight && hasImu)
+        // --- 좌/우 이미지 헤더 스탬프로 동기 ---
+        ImageMsg::SharedPtr left_msg, right_msg;
+        double tImLeft = 0.0, tImRight = 0.0;
+
+        // 좌/우 각각 프런트만 '훑어보고' 시간차를 줄이기 위해 오래된 쪽을 pop
         {
-            RCLCPP_INFO_ONCE(this->get_logger(), "Grab Image");
-            // Peek messages so we can reuse the exact stamp later (뮤텍스 보호)
-            ImageMsg::SharedPtr left_msg;
-            ImageMsg::SharedPtr right_msg;
+            std::lock_guard<std::mutex> lkL(bufMutexLeft_);
+            if (imgLeftBuf_.empty()) continue;
+            left_msg = imgLeftBuf_.front();
+        }
+        {
+            std::lock_guard<std::mutex> lkR(bufMutexRight_);
+            if (imgRightBuf_.empty()) continue;
+            right_msg = imgRightBuf_.front();
+        }
+
+        tImLeft  = Utility::StampToSec(left_msg->header.stamp);
+        tImRight = Utility::StampToSec(right_msg->header.stamp);
+
+        // 오른쪽이 많이 뒤처졌으면 오른쪽 버퍼에서 따라올 때까지 pop
+        {
+            std::lock_guard<std::mutex> lkR(bufMutexRight_);
+            while (!imgRightBuf_.empty()) {
+                right_msg = imgRightBuf_.front();
+                tImRight = Utility::StampToSec(right_msg->header.stamp);
+                if ((tImLeft - tImRight) > maxTimeDiff && imgRightBuf_.size() > 1) {
+                    imgRightBuf_.pop();
+                    continue;
+                }
+                break;
+            }
+        }
+        // 왼쪽이 많이 뒤처졌으면 왼쪽 버퍼에서 pop
+        {
+            std::lock_guard<std::mutex> lkL(bufMutexLeft_);
+            while (!imgLeftBuf_.empty()) {
+                left_msg = imgLeftBuf_.front();
+                tImLeft = Utility::StampToSec(left_msg->header.stamp);
+                if ((tImRight - tImLeft) > maxTimeDiff && imgLeftBuf_.size() > 1) {
+                    imgLeftBuf_.pop();
+                    continue;
+                }
+                break;
+            }
+        }
+
+        // 여전히 좌/우 간 시간차가 크면 다음 루프로
+        if (std::fabs(tImLeft - tImRight) > maxTimeDiff) {
+            RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
+                            "big time difference (L-R): %.3f s", tImLeft - tImRight);
+            std::this_thread::sleep_for(std::chrono::milliseconds(2));
+            continue;
+        }
+
+        RCLCPP_INFO_ONCE(this->get_logger(), "Grab Image");
+
+        // --- 최신 IMU 시간 확인: 이미지가 IMU보다 너무 앞서면 기다림 ---
+        double latest_imu_ts = 0.0;
+        {
+            std::lock_guard<std::mutex> lk(bufMutex_);
+            if (!imuBuf_.empty())
+                latest_imu_ts = Utility::StampToSec(imuBuf_.back()->header.stamp);
+        }
+        if ((tImLeft - latest_imu_ts) > imuLagLimit) {
+            // 이미지가 너무 앞서감 → IMU가 따라올 때까지 대기
+            std::this_thread::sleep_for(std::chrono::milliseconds(2));
+            continue;
+        }
+
+        // 반대로 IMU가 너무 앞서면(리드) 오래된 이미지들을 정리
+        if ((latest_imu_ts - tImLeft) > imuLeadLimit) {
+            // 오래된 좌/우 이미지를 버려 리드 감소
             {
                 std::lock_guard<std::mutex> lkL(bufMutexLeft_);
-                if (imgLeftBuf_.empty()) { continue; }
-                left_msg  = imgLeftBuf_.front();
+                if (!imgLeftBuf_.empty()) imgLeftBuf_.pop();
             }
             {
                 std::lock_guard<std::mutex> lkR(bufMutexRight_);
-                if (imgRightBuf_.empty()) { continue; }
-                right_msg = imgRightBuf_.front();
+                if (!imgRightBuf_.empty()) imgRightBuf_.pop();
             }
-            tImLeft  = Utility::StampToSec(left_msg->header.stamp);
-            tImRight = Utility::StampToSec(right_msg->header.stamp);
-
-            bufMutexRight_.lock();
-            while ((tImLeft - tImRight) > maxTimeDiff && imgRightBuf_.size() > 1)
-            {
-                imgRightBuf_.pop();
-                //tImRight = Utility::StampToSec(imgRightBuf_.front()->header.stamp);
-                right_msg = imgRightBuf_.front();
-                tImRight = Utility::StampToSec(right_msg->header.stamp);
-            }
-            bufMutexRight_.unlock();
-
-            bufMutexLeft_.lock();
-            while ((tImRight - tImLeft) > maxTimeDiff && imgLeftBuf_.size() > 1)
-            {
-                imgLeftBuf_.pop();
-                //tImLeft = Utility::StampToSec(imgLeftBuf_.front()->header.stamp);
-                left_msg = imgLeftBuf_.front();
-                tImLeft = Utility::StampToSec(left_msg->header.stamp);
-            }
-            bufMutexLeft_.unlock();
-
-            if ((tImLeft - tImRight) > maxTimeDiff || (tImRight - tImLeft) > maxTimeDiff)
-            {
-                RCLCPP_INFO_ONCE(this->get_logger(), "big time difference");
-                continue;
-            }
-
-
-            // 최신 IMU 타임스탬프를 잠금 상태에서 읽어 경합/UB 방지
-            double latest_imu_ts = 0.0;
-            {
-                std::lock_guard<std::mutex> lk(bufMutex_);
-                if (!imuBuf_.empty())
-                    latest_imu_ts = Utility::StampToSec(imuBuf_.back()->header.stamp);
-            }
-            if (tImLeft > latest_imu_ts)
-                continue;
- 
-
-
-            // Use the exact subscribed timestamp from the (synced) left image
-            const rclcpp::Time stamp_left = left_msg->header.stamp;
-
-            // bufMutexLeft_.lock();
-            // imLeft = GetImage(left_msg);
-            // imgLeftBuf_.pop();
-            // bufMutexLeft_.unlock();
-
-            {
-                std::lock_guard<std::mutex> lk(bufMutexLeft_);
-                if (imgLeftBuf_.empty()) { continue; }
-                auto cur_left = imgLeftBuf_.front();
-                if (cur_left != left_msg) { continue; }
-                imLeft = GetImage(cur_left);
-                imgLeftBuf_.pop();
-            }
-
-            {
-                std::lock_guard<std::mutex> lk(bufMutexRight_);
-                if (imgRightBuf_.empty()) { continue; }
-                auto cur_right = imgRightBuf_.front();
-                if (cur_right != right_msg) { continue; }
-                imRight = GetImage(cur_right);
-                imgRightBuf_.pop();
-            }
-
-            // bufMutexRight_.lock();
-            // imRight = GetImage(right_msg);
-            // imgRightBuf_.pop();
-            // bufMutexRight_.unlock();
-
-            vector<ORB_SLAM3::IMU::Point> vImuMeas;
-            Eigen::Vector3f Wbb; // body angular velocity in body frame
-            bufMutex_.lock();
-            if (!imuBuf_.empty())
-            {
-                RCLCPP_INFO_ONCE(this->get_logger(), "Grab Imu");
-                // Load imu measurements from buffer
-                vImuMeas.clear();
-                while (!imuBuf_.empty() && Utility::StampToSec(imuBuf_.front()->header.stamp) <= tImLeft)
-                {
-                    double t = Utility::StampToSec(imuBuf_.front()->header.stamp);
-                    cv::Point3f acc(imuBuf_.front()->linear_acceleration.x, imuBuf_.front()->linear_acceleration.y, imuBuf_.front()->linear_acceleration.z);
-                    cv::Point3f gyr(imuBuf_.front()->angular_velocity.x, imuBuf_.front()->angular_velocity.y, imuBuf_.front()->angular_velocity.z);
-                    vImuMeas.push_back(ORB_SLAM3::IMU::Point(acc, gyr, t));
-                    Wbb = Eigen::Vector3f(imuBuf_.front()->angular_velocity.x, imuBuf_.front()->angular_velocity.y, imuBuf_.front()->angular_velocity.z);
-                    imuBuf_.pop();
-                }
-            }
-            bufMutex_.unlock();
-
-            
-            // CLAHE가 켜졌다면, 포인터가 비어있을 수 있으므로 안전하게 초기화
-            if (bClahe_)
-             {
-                if (!clahe_)
-                {
-                    // 기본 파라미터로 생성 (필요시 파라미터화)
-                    clahe_ = cv::createCLAHE(3.0, cv::Size(8, 8));
-                }
-                clahe_->apply(imLeft, imLeft);
-                clahe_->apply(imRight, imRight);
-            }
-
-            if (doRectify_)
-            {
-                cv::remap(imLeft, imLeft, M1l_, M2l_, cv::INTER_LINEAR);
-                cv::remap(imRight, imRight, M1r_, M2r_, cv::INTER_LINEAR);
-            }
-            
-            // Transform of camera in  world frame
-            Sophus::SE3f Tcw = SLAM_->TrackStereo(imLeft, imRight, tImLeft, vImuMeas);
-            Sophus::SE3f Twc = Tcw.inverse(); // Twc is imu optical frame pose in ROS FLU map coordinate
-            RCLCPP_INFO_ONCE(this->get_logger(), "Camera pose in world frame: ");
-
-            // publish topics
-            std::string world_frame = this->get_parameter("world_frame").as_string();
-            std::string odom_frame = this->get_parameter("odom_frame").as_string();
-            std::string body_frame = this->get_parameter("body_frame").as_string();
-            std::string body_optical_frame = this->get_parameter("body_optical_frame").as_string(); // unused?
-            std::string camera_optical_frame = this->get_parameter("camera_optical_frame").as_string(); // unused?
-            
-            RCLCPP_INFO_ONCE(this->get_logger(), "Publishing camera pose in world frame: ");
-            RCLCPP_INFO_ONCE(this->get_logger(), world_frame.c_str());
-            RCLCPP_INFO_ONCE(this->get_logger(), odom_frame.c_str());
-            RCLCPP_INFO_ONCE(this->get_logger(), body_frame.c_str());
-            
-            // define coordinate transforms ///
-            // OpenCV to ROS FLU coordinate transforms
-            Eigen::Matrix<float, 3, 3> cv_to_ros_rot; 
-            Eigen::Matrix<float, 3, 1> cv_to_ros_trans; 
-            cv_to_ros_rot << 0, 0, 1,
-                            -1, 0, 0,
-                            0, -1, 0;
-            cv_to_ros_trans << 0, 0, 0;
-            Sophus::SE3f cv_to_ros(cv_to_ros_rot, cv_to_ros_trans);
-            std::cout << cv_to_ros.matrix() << std::endl; 
-
-            // coordiante transform
-            Twc = Twc * cv_to_ros.inverse(); // imu frame pose in ROS FLU map coorinate
-
-            // Option1: publish map to odom tf from SLAM and odom to camera from VIO 
-            //// TF processing ////
-            // try {               
-            //     geometry_msgs::msg::TransformStamped camera_to_odom = tf_buffer_->lookupTransform(body_frame, odom_frame, tf2::TimePointZero);
-            //     Sophus::SE3f Tco= transform_to_SE3(camera_to_odom);
-            //     Sophus::SE3f Two = Twc * Tco.inverse();
-            //     publish_world_to_odom_tf(tf_broadcaster_, stamp_left, Two, world_frame, odom_frame);
-            // } catch (const tf2::TransformException & ex) {
-            //     RCLCPP_INFO(
-            //     this->get_logger(), "Could not get transform %s to %s: %s",
-            //     body_frame.c_str(), odom_frame.c_str(), ex.what());
-            //     return;
-            // }
-
-            // Option2: publish map to camera tf from SLAM
-            publish_camera_tf(tf_broadcaster_, stamp_left, Twc, world_frame, body_frame);
-            publish_camera_pose(pubPose_, stamp_left, Twc, world_frame);
-            publish_tracking_img(pubTrackImage_, stamp_left, SLAM_->GetCurrentFrame(), world_frame);
-            //publish_keypoints(pubTrackedKeypoints_, SLAM_->GetTrackedMapPoints(), SLAM_->GetTrackedKeyPoints(), stamp_left, world_frame);
-            publish_tracked_points(pubTrackedPoints_, SLAM_->GetTrackedMapPoints(), stamp_left, world_frame);
-            publish_all_points(pubAllPoints_, SLAM_->GetAllMapPoints(), stamp_left, world_frame);
-            publish_kf_markers(pubKFMarkers_, SLAM_->GetAllKeyframePoses(), stamp_left, world_frame);
-
-            //publishKeyframeOutputs_(stamp_left);
-
-            // std::chrono::milliseconds tSleep(1);
-            // std::this_thread::sleep_for(tSleep);
-        }   
-        else
-        {
-            // 방어적: 루프가 과도하게 CPU를 먹지 않도록
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
+                            "IMU leads images too much (%.3fs) → drop oldest image", latest_imu_ts - tImLeft);
+            continue;
         }
+
+        // --- 이제 실제로 동일한 프레임을 소비 (ABA 문제 방지) ---
+        cv::Mat imLeft, imRight;
+        {
+            std::lock_guard<std::mutex> lkL(bufMutexLeft_);
+            if (imgLeftBuf_.empty() || imgLeftBuf_.front() != left_msg) continue;
+            imLeft = GetImage(left_msg);
+            imgLeftBuf_.pop();
+        }
+        {
+            std::lock_guard<std::mutex> lkR(bufMutexRight_);
+            if (imgRightBuf_.empty() || imgRightBuf_.front() != right_msg) continue;
+            imRight = GetImage(right_msg);
+            imgRightBuf_.pop();
+        }
+
+        // 입력 이미지 유효성 검사
+        if (imLeft.empty() || imRight.empty()) {
+            RCLCPP_WARN(this->get_logger(), "Empty image(s). Skip this frame.");
+            continue;
+        }
+
+        // --- IMU 적분 구간: [last_img_ts, tImLeft] ---
+        double tStart = std::isnan(last_img_ts) ? (tImLeft - warmupSec) : last_img_ts;
+        if (tStart > tImLeft) tStart = tImLeft; // 안전
+
+        std::vector<ORB_SLAM3::IMU::Point> vImuMeas;
+        Eigen::Vector3f Wbb;
+        {
+            std::lock_guard<std::mutex> lk(bufMutex_);
+            RCLCPP_INFO_ONCE(this->get_logger(), "Grab Imu");
+
+            // tStart 이전 IMU는 폐기(버퍼 누적 방지)
+            while (!imuBuf_.empty() &&
+                   Utility::StampToSec(imuBuf_.front()->header.stamp) < tStart) {
+                imuBuf_.pop();
+            }
+
+            // [tStart, tImLeft] 구간의 IMU 수집
+            vImuMeas.clear();
+            while (!imuBuf_.empty()) {
+                double t = Utility::StampToSec(imuBuf_.front()->header.stamp);
+                if (t > tImLeft) break;
+                const auto &msg = imuBuf_.front();
+                cv::Point3f acc(msg->linear_acceleration.x,
+                                msg->linear_acceleration.y,
+                                msg->linear_acceleration.z);
+                cv::Point3f gyr(msg->angular_velocity.x,
+                                msg->angular_velocity.y,
+                                msg->angular_velocity.z);
+                vImuMeas.emplace_back(acc, gyr, t);
+                Wbb = Eigen::Vector3f(msg->angular_velocity.x,
+                                      msg->angular_velocity.y,
+                                      msg->angular_velocity.z);
+                imuBuf_.pop();
+            }
+        }
+
+        // 방어: 빈 IMU면 이번 프레임 스킵(세그폴트 방지)
+        if (vImuMeas.size() < static_cast<size_t>(minImuCount)) {
+            RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
+                            "IMU vector too small (%zu < %d). Skip this frame.",
+                            vImuMeas.size(), minImuCount);
+            // 이미지 FPS가 너무 높거나, IMU QoS/지연 문제 가능성 → 상위 가이드 참조
+            last_img_ts = tImLeft; // 그래도 진행 표시(다음 윈도우를 좁힘)
+            continue;
+        }
+
+        // --- 이미지 전처리(유효성 통과 후) ---
+        if (bClahe_) {
+            if (!clahe_) clahe_ = cv::createCLAHE(3.0, cv::Size(8, 8));
+            clahe_->apply(imLeft, imLeft);
+            clahe_->apply(imRight, imRight);
+        }
+        if (doRectify_) {
+            cv::remap(imLeft,  imLeft,  M1l_, M2l_, cv::INTER_LINEAR);
+            cv::remap(imRight, imRight, M1r_, M2r_, cv::INTER_LINEAR);
+        }
+
+        // --- SLAM 추적 ---
+        const rclcpp::Time stamp_left = left_msg->header.stamp;
+        Sophus::SE3f Tcw = SLAM_->TrackStereo(imLeft, imRight, tImLeft, vImuMeas);
+        Sophus::SE3f Twc = Tcw.inverse();
+
+        // 좌표계 변환 (OpenCV->ROS FLU)
+        Eigen::Matrix<float,3,3> cv_to_ros_rot;
+        Eigen::Matrix<float,3,1> cv_to_ros_trans;
+        cv_to_ros_rot << 0, 0, 1,
+                        -1, 0, 0,
+                         0,-1, 0;
+        cv_to_ros_trans << 0, 0, 0;
+        Sophus::SE3f cv_to_ros(cv_to_ros_rot, cv_to_ros_trans);
+        Twc = Twc * cv_to_ros.inverse();
+
+        // Publish
+        const std::string world_frame = this->get_parameter("world_frame").as_string();
+        const std::string odom_frame  = this->get_parameter("odom_frame").as_string();
+        const std::string body_frame  = this->get_parameter("body_frame").as_string();
+
+        publish_camera_tf   (tf_broadcaster_, stamp_left, Twc, world_frame, body_frame);
+        publish_camera_pose (pubPose_,       stamp_left, Twc, world_frame);
+        publish_tracking_img(pubTrackImage_, stamp_left, SLAM_->GetCurrentFrame(), world_frame);
+        publish_tracked_points(pubTrackedPoints_, SLAM_->GetTrackedMapPoints(), stamp_left, world_frame);
+        publish_all_points    (pubAllPoints_,    SLAM_->GetAllMapPoints(),       stamp_left, world_frame);
+        publish_kf_markers    (pubKFMarkers_,    SLAM_->GetAllKeyframePoses(),   stamp_left, world_frame);
+
+        // 다음 루프를 위한 기준 시각 갱신
+        last_img_ts = tImLeft;
     }
 }
+

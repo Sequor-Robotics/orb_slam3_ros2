@@ -22,7 +22,7 @@ def generate_launch_description():
     )
     declare_config = DeclareLaunchArgument(
         "config",
-        default_value=PathJoinSubstitution([FindPackageShare("orbslam3"), "config", "stereo-inertial", "zed.yaml"]),
+        default_value=PathJoinSubstitution([FindPackageShare("orbslam3"), "config", "stereo-inertial", "zed_ros1.yaml"]),
         description="Path to ORB-SLAM3 camera config",
     )
     declare_rectify = DeclareLaunchArgument(
@@ -37,7 +37,7 @@ def generate_launch_description():
     )
     declare_camera_name = DeclareLaunchArgument(
         "camera_name",
-        default_value="zed",
+        default_value="zedx",
         description="Base camera namespace (e.g., zed, zed2, zedx)",
     )
 
@@ -58,7 +58,7 @@ def generate_launch_description():
     orbslam3_node = Node(
         package="orbslam3",
         executable="stereo-inertial",  # <-- adjust if your binary name is different
-        prefix ="xterm -e gdb run --args",
+        # prefix ="xterm -e gdb run --args",
         name="orbslam3",
         # namespace=node_namespace,
         namespace=TextSubstitution(text="/orb_slam3"),
