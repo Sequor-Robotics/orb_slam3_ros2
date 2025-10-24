@@ -22,6 +22,49 @@ StereoInertialNode::StereoInertialNode(ORB_SLAM3::System *SLAM, const string &st
     std::cout << "Rectify: " << doRectify_ << std::endl;
     std::cout << "Equal: " << doEqual_ << std::endl;
 
+    // ===== Added: Downsample parameters =====
+    double ds_scale = 1.0; // default if not present
+    {
+        cv::FileStorage fsSettings(strSettingsFile, cv::FileStorage::READ);
+        if(!fsSettings.isOpened())
+        {
+            std::cerr << "ERROR: Wrong path to settings: " << strSettingsFile << std::endl;
+            assert(0);
+        }
+
+        // Prefer lowercase key as requested, but accept common variants.
+        cv::FileNode cam = fsSettings["ImageScale"];
+        if (!cam.empty())
+        {
+            ds_scale = static_cast<double>(cam);
+        }
+
+        if (ds_scale <= 0.0 || ds_scale > 1.0) {
+            RCLCPP_ERROR(this->get_logger(),
+                        "[ImageScale=%.3f] out of range.", 
+                        ds_scale);
+            cerr << "ImageScale out of range!" << endl; 
+        } else {
+            RCLCPP_INFO(this->get_logger(),
+                        "Loaded ImageScale=%.3f from %s",
+                        ds_scale, strSettingsFile.c_str());
+        }
+    }
+
+    // ===== Updated: Downsample parameters =====
+    // Use YAML value as the default; allow ROS param override from launch.py if provided.
+    this->declare_parameter<double>("downsample.scale", ds_scale);
+    this->declare_parameter<std::string>("downsample.method", "auto");
+    ds_scale_  = this->get_parameter("downsample.scale").as_double();
+    ds_method_ = this->get_parameter("downsample.method").as_string();
+
+    if (ds_method_ != "auto" && ds_method_ != "area" && ds_method_ != "pyr") {
+        RCLCPP_WARN(this->get_logger(),
+                    "[downsample.method=%s] invalid. Use auto/area/pyr. Using auto.",
+                    ds_method_.c_str());
+        ds_method_ = "auto";
+    }
+
     if (doRectify_)
     {
         // Load settings related to stereo calibration
@@ -137,6 +180,55 @@ void StereoInertialNode::GrabImageRight(const ImageMsg::SharedPtr msgRight)
     bufMutexRight_.unlock();
 }
 
+
+// === Added: Downsample helper ===
+namespace {
+inline bool approx_equal(double a, double b, double eps = 1e-6) {
+    return std::abs(a - b) <= eps * std::max(1.0, std::max(std::abs(a), std::abs(b)));
+}
+}
+
+cv::Mat StereoInertialNode::DownsampleIfNeeded(const cv::Mat &src) const
+{
+    if (ds_scale_ >= 0.999) {
+        return src.clone(); // no downsample
+    }
+
+    // Forced method
+    if (ds_method_ == "area") {
+        cv::Mat dst;
+        cv::resize(src, dst, cv::Size(), ds_scale_, ds_scale_, cv::INTER_AREA);
+        return dst;
+    }
+
+    // pyr or auto
+    double inv = 1.0 / ds_scale_;
+    double log2_inv = std::log2(inv);
+    double r = std::round(log2_inv);
+    bool near_pow2 = std::abs(log2_inv - r) < 1e-6 && (r >= 1.0);
+
+    cv::Mat cur = src;
+    int pyr_times = 0;
+
+    // perform only one pyrDown regardless of ds_scale_
+    if (ds_method_ == "pyr" || (ds_method_ == "auto" && near_pow2)) {
+        cv::Mat tmp;
+        cv::pyrDown(cur, tmp);  // one-time downsample by 1/2
+        cur = std::move(tmp);
+
+        // if ds_scale_ != 0.5, adjust slightly using INTER_AREA
+        if (!approx_equal(ds_scale_, 0.5)) {
+            double residual = ds_scale_ / 0.5;  // adjust relative to half-size
+            cv::resize(cur, cur, cv::Size(), residual, residual, cv::INTER_AREA);
+        }
+        return cur.clone();
+    }
+
+    cv::Mat dst;
+    cv::resize(src, dst, cv::Size(), ds_scale_, ds_scale_, cv::INTER_AREA);
+    return dst;
+}
+
 cv::Mat StereoInertialNode::GetImage(const ImageMsg::SharedPtr msg)
 {
     // Copy the ros image message to cv::Mat.
@@ -149,34 +241,25 @@ cv::Mat StereoInertialNode::GetImage(const ImageMsg::SharedPtr msg)
     catch (cv_bridge::Exception &e)
     {
         RCLCPP_ERROR(this->get_logger(), "cv_bridge exception: %s", e.what());
+        return cv::Mat();
     }
 
-    if (cv_ptr->image.type() == 0)
-    {
+    if (cv_ptr->image.type() != CV_8UC1) {
+        std::cerr << "Error image type (expect mono8). Got type=" << cv_ptr->image.type() << std::endl;
         return cv_ptr->image.clone();
     }
-    else
-    {
-        std::cerr << "Error image type" << std::endl;
-        return cv_ptr->image.clone();
-    }
+
+    // === Downsample here ===
+    cv::Mat out = DownsampleIfNeeded(cv_ptr->image);
+    return out;
 }
 
 void StereoInertialNode::SyncWithImu()
 {
     // === 튜너블 파라미터(원하면 ROS param으로 뺄 것) ===
-    const double maxTimeDiff = this->has_parameter("max_time_diff")
-                               ? this->get_parameter("max_time_diff").as_double()
-                               : 0.3;             // 이미지-이미지 동기 허용 오차 (기본 0.3s)
-    const double imuLeadLimit = this->has_parameter("imu_lead_limit")
-                                ? this->get_parameter("imu_lead_limit").as_double()
-                                : 0.5;             // IMU가 이미지보다 많이 '미리' 온 경우 버림 한계
-    const double imuLagLimit  = this->has_parameter("imu_lag_limit")
-                                ? this->get_parameter("imu_lag_limit").as_double()
-                                : 0.5;             // IMU가 이미지보다 많이 '늦게' 온 경우 대기 한계
     const double warmupSec    = this->has_parameter("warmup_sec")
                                 ? this->get_parameter("warmup_sec").as_double()
-                                : 0.5;             // 첫 프레임에서 통합할 사전 IMU 구간 길이
+                                : 1.0;             // 첫 프레임에서 통합할 사전 IMU 구간 길이
     const int    minImuCount  = this->has_parameter("min_imu_count")
                                 ? this->get_parameter("min_imu_count").as_int()
                                 : 2;               // 한 프레임당 최소 IMU 샘플 수(경험치)
@@ -227,40 +310,6 @@ void StereoInertialNode::SyncWithImu()
         tImLeft  = Utility::StampToSec(left_msg->header.stamp);
         tImRight = Utility::StampToSec(right_msg->header.stamp);
 
-        // 오른쪽이 많이 뒤처졌으면 오른쪽 버퍼에서 따라올 때까지 pop
-        {
-            std::lock_guard<std::mutex> lkR(bufMutexRight_);
-            while (!imgRightBuf_.empty()) {
-                right_msg = imgRightBuf_.front();
-                tImRight = Utility::StampToSec(right_msg->header.stamp);
-                if ((tImLeft - tImRight) > maxTimeDiff && imgRightBuf_.size() > 1) {
-                    imgRightBuf_.pop();
-                    continue;
-                }
-                break;
-            }
-        }
-        // 왼쪽이 많이 뒤처졌으면 왼쪽 버퍼에서 pop
-        {
-            std::lock_guard<std::mutex> lkL(bufMutexLeft_);
-            while (!imgLeftBuf_.empty()) {
-                left_msg = imgLeftBuf_.front();
-                tImLeft = Utility::StampToSec(left_msg->header.stamp);
-                if ((tImRight - tImLeft) > maxTimeDiff && imgLeftBuf_.size() > 1) {
-                    imgLeftBuf_.pop();
-                    continue;
-                }
-                break;
-            }
-        }
-
-        // 여전히 좌/우 간 시간차가 크면 다음 루프로
-        if (std::fabs(tImLeft - tImRight) > maxTimeDiff) {
-            RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
-                            "big time difference (L-R): %.3f s", tImLeft - tImRight);
-            std::this_thread::sleep_for(std::chrono::milliseconds(2));
-            continue;
-        }
 
         RCLCPP_INFO_ONCE(this->get_logger(), "Grab Image");
 
@@ -271,28 +320,6 @@ void StereoInertialNode::SyncWithImu()
             if (!imuBuf_.empty())
                 latest_imu_ts = Utility::StampToSec(imuBuf_.back()->header.stamp);
         }
-        if ((tImLeft - latest_imu_ts) > imuLagLimit) {
-            // 이미지가 너무 앞서감 → IMU가 따라올 때까지 대기
-            std::this_thread::sleep_for(std::chrono::milliseconds(2));
-            continue;
-        }
-
-        // 반대로 IMU가 너무 앞서면(리드) 오래된 이미지들을 정리
-        if ((latest_imu_ts - tImLeft) > imuLeadLimit) {
-            // 오래된 좌/우 이미지를 버려 리드 감소
-            {
-                std::lock_guard<std::mutex> lkL(bufMutexLeft_);
-                if (!imgLeftBuf_.empty()) imgLeftBuf_.pop();
-            }
-            {
-                std::lock_guard<std::mutex> lkR(bufMutexRight_);
-                if (!imgRightBuf_.empty()) imgRightBuf_.pop();
-            }
-            RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
-                            "IMU leads images too much (%.3fs) → drop oldest image", latest_imu_ts - tImLeft);
-            continue;
-        }
-
         // --- 이제 실제로 동일한 프레임을 소비 (ABA 문제 방지) ---
         cv::Mat imLeft, imRight;
         {

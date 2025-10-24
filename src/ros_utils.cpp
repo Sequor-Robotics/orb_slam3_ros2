@@ -1,4 +1,5 @@
 #include <ros_utils.hpp>
+#include <opencv2/opencv.hpp>
 
 using ImageMsg = sensor_msgs::msg::Image;
 using PcdMsg = sensor_msgs::msg::PointCloud2;
@@ -78,21 +79,41 @@ void publish_body_odometry(
   publisher->publish(odom_msg);
 }
 
+// void publish_tracking_img(
+//   const rclcpp::Publisher<ImageMsg>::SharedPtr& publisher,
+//   const rclcpp::Time& stamp,
+//   cv::Mat image, 
+//   std::string frame_id)
+// {
+//   std_msgs::msg::Header header;
+
+//   header.stamp = stamp;
+//   header.frame_id = frame_id;
+
+//   sensor_msgs::msg::Image::SharedPtr image_msg = cv_bridge::CvImage(header, "bgr8", image).toImageMsg();
+
+//   publisher->publish(*image_msg.get());
+// }
 void publish_tracking_img(
   const rclcpp::Publisher<ImageMsg>::SharedPtr& publisher,
   const rclcpp::Time& stamp,
-  cv::Mat image, 
-  std::string frame_id)
+  const cv::Mat image,
+  const std::string frame_id)
 {
-  std_msgs::msg::Header header;
+  // Downsample for lightweight debug visualization
+  cv::Mat resized;
+  cv::resize(image, resized, cv::Size(), 0.5, 0.5, cv::INTER_AREA);
 
+  std_msgs::msg::Header header;
   header.stamp = stamp;
   header.frame_id = frame_id;
 
-  sensor_msgs::msg::Image::SharedPtr image_msg = cv_bridge::CvImage(header, "bgr8", image).toImageMsg();
-
+  sensor_msgs::msg::Image::SharedPtr image_msg = cv_bridge::CvImage(header, "bgr8", resized).toImageMsg();
   publisher->publish(*image_msg.get());
+  
 }
+
+
 
 void publish_camera_tf(
   const std::shared_ptr<tf2_ros::TransformBroadcaster>& tf_broadcaster,

@@ -1,8 +1,7 @@
 # Converted from zed_stereo_inertial.launch.yaml
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration, TextSubstitution
-from launch.substitutions import PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration, TextSubstitution, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 import os
@@ -14,6 +13,13 @@ def generate_launch_description():
     rectify = LaunchConfiguration("rectify")
     equalize = LaunchConfiguration("equalize")
     camera_name = LaunchConfiguration("camera_name")
+    downsample_method = LaunchConfiguration("downsample_method")
+
+    declare_downsample_method = DeclareLaunchArgument(
+        "downsample_method",
+        default_value=TextSubstitution(text="area"),
+        description="Downsampling method: auto | area | pyr (maps to ROS2 param 'downsample.method')",
+    )
 
     declare_vocab = DeclareLaunchArgument(
         "vocab",
@@ -41,35 +47,24 @@ def generate_launch_description():
         description="Base camera namespace (e.g., zed, zed2, zedx)",
     )
 
-    # # Namespace like "/<camera_name>/zed_node"
-    # node_namespace = [camera_name, TextSubstitution(text="/zed_node")]
-
-    # Parameter file from YAML
     slam_param_file = PathJoinSubstitution([
         FindPackageShare("orbslam3"),
         "config",
         "zed-stereo-inertial-slam.yaml",
     ])
 
-    # NOTE:
-    # The YAML did not explicitly list 'pkg' and 'exec' for the node.
-    # We assume package="orbslam3" and executable="stereo_inertial".
-    # If your executable name differs, update 'executable' accordingly.
     orbslam3_node = Node(
         package="orbslam3",
-        executable="stereo-inertial",  # <-- adjust if your binary name is different
-        # prefix ="xterm -e gdb run --args",
+        executable="stereo-inertial",  # adjust if your binary name is different
         name="orbslam3",
-        # namespace=node_namespace,
         namespace=TextSubstitution(text="/orb_slam3"),
-        # Pass the same CLI args order as in YAML: vocab, config, rectify, equalize
+        # positional args expected by the C++ main: vocab, config, rectify, equalize
         arguments=[vocab, config, rectify, equalize],
-        parameters=[slam_param_file],
-        # Remappings from YAML
+        parameters=[
+            slam_param_file,
+            {"downsample.method": downsample_method},  # pass as ROS2 parameter
+        ],
         remappings=[
-            # ("camera/left",  "left/image_rect_color"),
-            # ("camera/right", "right/image_rect_color"),
-            # ("imu",          "imu/data"),
             ("camera/left",
                 [TextSubstitution(text="/"), camera_name,
                  TextSubstitution(text="/zed_node/left/image_rect_color")]),
@@ -84,6 +79,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        declare_downsample_method,
         declare_vocab,
         declare_config,
         declare_rectify,

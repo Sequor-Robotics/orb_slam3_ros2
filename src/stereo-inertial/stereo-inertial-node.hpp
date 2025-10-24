@@ -76,6 +76,12 @@ private:
 
     bool bClahe_;
     cv::Ptr<cv::CLAHE> clahe_ = cv::createCLAHE(3.0, cv::Size(8, 8));
+
+// === Added to class (StereoInertialNode.h) ===
+
+   double ds_scale_ = 1.0;
+   std::string ds_method_ = "auto";
+   cv::Mat DownsampleIfNeeded(const cv::Mat &src) const;
 };
 
 #endif
